@@ -1,0 +1,14 @@
+{
+  "intents": [
+    {
+      "tag": "greetings",
+      "patterns": ["!hola","buenos dias", "muy buenos dias"],
+      "responses": ["!muy buenos dias, como estas", "hola!", "como estas"]
+    },
+    {
+      "tag": "edad",
+      "patterns": ["¿Que edad tienes?","Cuantos años tienes", "edades"],
+      "responses": ["Tengo 1000 años de antiguedad", "No tengo una edad soy una maquina", "La misma edad de termineitor hasta la vista baby"]
+    }
+  ]
+}
