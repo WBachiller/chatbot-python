@@ -1,3 +1,4 @@
+
 import random
 import json
 import pickle
@@ -10,18 +11,17 @@ from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
 
 lemmatizer = WordNetLemmatizer()
-intents = json.loads(open('intenso.json').read())
 
-words = pickle.load(open('words.pkl', 'rb'))
-classes = pickle.load(open('classes.pkl', 'rb'))
-model = load_model('chatbot_model.model')
+
+
 
 def clean_up_sentece(sentence):
     sentence_words = nltk.word_tokenize(sentence)
     sentence_words = [lemmatizer.lemmatize(word) for word in sentence_words]
     return sentence_words
 
-def bag_of_words(sentence):
+def bag_of_words(sentence, name_chatbot):
+    words = pickle.load(open('words/'+name_chatbot+'-words.pkl', 'rb'))
     sentence_words = clean_up_sentece(sentence)
     bag = [0] * len(words)
     for w in sentence_words:
@@ -30,8 +30,10 @@ def bag_of_words(sentence):
                 bag[i] = 1
     return np.array(bag)
 
-def predict_class(sentence):
-    bow = bag_of_words(sentence)
+def predict_class(filename, sentence, name_chatbot):
+    classes = pickle.load(open('classes/'+name_chatbot+'-classes.pkl', 'rb'))
+    model = load_model('models/'+name_chatbot+'.model')
+    bow = bag_of_words(sentence, name_chatbot)
     res = model.predict(np.array([bow]))[0]
     ERROR_TRESHOLD = 0.25
 
@@ -46,18 +48,13 @@ def get_response(intents_list, intents_json):
     tag = intents_list[0]['intent']
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
-        print(tag)
         if i['tag'] == tag:
             result = random.choice(i['responses'])
             break
     return result
 
-print("GO! bot is running")
+def conversation(filename, message, name_chatbot):
+    intents = json.loads(filename)
+    ints = predict_class(filename, message, name_chatbot)
+    return get_response(ints, intents)
 
-if __name__ == '__main__':
-    intents = json.loads(open('intenso.json').read())
-    while True:
-        message = input("")
-        ints = predict_class(message)
-        res = get_response(ints, intents)
-        print(res)

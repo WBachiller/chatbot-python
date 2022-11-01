@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "c9a1321d-6ffd-44a0-ac53-ea720bac5f7a",
+		"name": "ChatBot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6421300"
+	},
+	"item": [
+		{
+			"name": "Listado de chatbots",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/v1/intents",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"intents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ver chat bot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/v1/intents/-NFl87dSes0-LP5hBWGt",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"intents",
+						"-NFl87dSes0-LP5hBWGt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar chatbot",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"chatbot\": \"UniChatbot\",\r\n  \"intents\": [\r\n    {\r\n      \"tag\": \"greetings\",\r\n      \"patterns\": [\"!hola\",\"buenos dias\", \"muy buenos dias\"],\r\n      \"responses\": [\"!muy buenos dias, como estas\", \"hola!\", \"como estas\"]\r\n    },\r\n    {\r\n      \"tag\": \"edad\",\r\n      \"patterns\": [\"¿Que edad tienes?\",\"Cuantos años tienes\", \"edades\"],\r\n      \"responses\": [\"Tengo 1000 años de antiguedad\", \"No tengo una edad soy una maquina\", \"La misma edad de termineitor hasta la vista baby\"]\r\n    },\r\n       {\r\n      \"tag\": \"edad\",\r\n      \"patterns\": [\"Tengo hambre \", \"tengo hambre\"],\r\n      \"responses\": [\"Este chatbot te hara de comer\", \"soy muy buen cocinero\"]\r\n    },\r\n    {\r\n      \"tag\": \"soporte\",\r\n      \"patterns\": [\"Ayuda\", \"nesecito ayuda\"],\r\n      \"responses\": [\"Yo tambien\", \"hola soy cortana\"]\r\n    },\r\n\r\n      {\r\n      \"tag\": \"name\",\r\n      \"patterns\": [\"Como te llamas\", \"Cual es tu nombre\"],\r\n      \"responses\": [\"Mi nombre es bot\", \"Por telefono se llama\"]\r\n    }\r\n    \r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/v1/intents/-NFl87dSes0-LP5hBWGt",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"intents",
+						"-NFl87dSes0-LP5hBWGt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear chatbot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"chatbot\": \"UniChatbot\",\r\n  \"intents\": [\r\n    {\r\n      \"tag\": \"greetings\",\r\n      \"patterns\": [\"!hola\",\"buenos dias\", \"muy buenos dias\"],\r\n      \"responses\": [\"!muy buenos dias, como estas\", \"hola!\", \"como estas\"]\r\n    },\r\n    {\r\n      \"tag\": \"edad\",\r\n      \"patterns\": [\"¿Que edad tienes?\",\"Cuantos años tienes\", \"edades\"],\r\n      \"responses\": [\"Tengo 1000 años de antiguedad\", \"No tengo una edad soy una maquina\", \"La misma edad de termineitor hasta la vista baby\"]\r\n    },\r\n       {\r\n      \"tag\": \"edad\",\r\n      \"patterns\": [\"Tengo hambre \", \"tengo hambre\"],\r\n      \"responses\": [\"Este chatbot te hara de comer\", \"soy muy buen cocinero\"]\r\n    },\r\n    {\r\n      \"tag\": \"soporte\",\r\n      \"patterns\": [\"Ayuda\", \"nesecito ayuda\"],\r\n      \"responses\": [\"Yo tambien\", \"hola soy cortana\"]\r\n    },\r\n\r\n      {\r\n      \"tag\": \"name\",\r\n      \"patterns\": [\"Como te llamas\", \"Cual es tu nombre\"],\r\n      \"responses\": [\"Mi nombre es bot\", \"Por telefono se llama\"]\r\n    }\r\n    \r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/v1/intents",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"intents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Conversacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"hola\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/v1/intents/converstion/-NFl87dSes0-LP5hBWGt",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"intents",
+						"converstion",
+						"-NFl87dSes0-LP5hBWGt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entreganamiento",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/v1/intents/traning/-NFl87dSes0-LP5hBWGt",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"intents",
+						"traning",
+						"-NFl87dSes0-LP5hBWGt"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
